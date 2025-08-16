@@ -1,0 +1,20 @@
+name: Dollar Stalker
+on:
+  schedule:
+    - cron: "30 6 * * * "
+  workflow_dispatch:
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        run: sudo apt-get install -y python3 python3-pip
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Run Script
+        run: python3 dollar_tracker.py
+      - name: Save Result
+        run: |
+          echo "تاریخ: $(date +'%Y-%m-%d %H:%M')" >> history.txt
+          echo "قیمت: $(cat price.txt)" >> history.txt
