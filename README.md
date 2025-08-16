@@ -1,2 +1,2 @@
 # dollar-stalker
-say you about dollar price 
+this proj say you about dollar price 
